@@ -1,0 +1,19 @@
+.card {
+  display: flex;
+  background: white;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin: 4px;
+  padding: 4px;
+}
+
+ul {
+  list-style: none;
+  list-style-type: none;
+}
+
+li {
+  list-style: none;
+  list-style-type: none;
+}
+
