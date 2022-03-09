@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import NewUrl from "./components/NewUrl";
+import BookmarkItem from "./components/BookmarkItem";
 import { Bookmark } from "./models/bookmark.model";
 
 import "./App.css";
@@ -16,12 +17,21 @@ const App: React.FC = () => {
     setMyBookmarks((prevBookmarks) => [...prevBookmarks, newBookmark]);
   };
 
+  const removeBookmarkHandler = (id: string) => {
+    setMyBookmarks( prevBms => prevBms.filter(bm=> bm.id !== id))
+  };
+
   return (
     <div className="App">
       <NewUrl onAddUrl={addNewUrlHandler}></NewUrl>
       <ul>
         {myBookmarks.map((bm) => (
-          <li key={bm.id}>{bm.url}</li>
+          <BookmarkItem
+            key={bm.id}
+            id={bm.id}
+            url={bm.url}
+            onRemoveBookmark={() => removeBookmarkHandler(bm.id)}
+          ></BookmarkItem>
         ))}
       </ul>
     </div>
