@@ -451,3 +451,7 @@ Temporary Items
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#custom
+App_original.css
+App_original.tsx
