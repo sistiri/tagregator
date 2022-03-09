@@ -1,8 +1,9 @@
 .card {
-  display: flex;
+  /* align-items: unset; */
   background: white;
   border: 1px solid lightgrey;
   border-radius: 5px;
+  /* flex-direction: row; */
   margin: 4px;
   padding: 4px;
 }
@@ -10,10 +11,6 @@
 ul {
   list-style: none;
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
-
-li {
-  list-style: none;
-  list-style-type: none;
-}
-

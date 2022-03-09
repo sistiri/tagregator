@@ -2,7 +2,6 @@ import React, { ReactElement } from "react";
 import classes from "./Card.module.css";
 
 type cardProps = {
-  key: string;
   className: string;
   children: ReactElement;
 };
