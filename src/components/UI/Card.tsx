@@ -1,8 +1,16 @@
-import React, { PropsWithChildren, ReactNode } from "react";
-import classes from './Card.module.css'
+import React, { ReactElement } from "react";
+import classes from "./Card.module.css";
 
-const Card = (props: PropsWithChildren<ReactNode>) => {
-return <div className={classes.card}>{props.children}</div>
+type cardProps = {
+  key: string;
+  className: string;
+  children: ReactElement;
 };
 
-export default Card
+const Card = (props: cardProps) => {
+  return (
+    <div className={`${classes.card} ${props.className}`}>{props.children}</div>
+  );
+};
+
+export default Card;
