@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "./UI/Card";
 
-import classes from './BookmarkItem.module.css'
+import classes from "./BookmarkItem.module.css";
+import Button from "./UI/Button";
 
 type BookMarkItemProps = {
   key: string;
@@ -15,9 +16,13 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
       <Card className={classes.card}>
         <li key={props.id} id={props.id}>
           <span>{props.url}</span>
-          <button className= {classes.btn} type="button" onClick={props.onRemoveBookmark}>
+          <Button
+            className={classes.button}
+            type="button"
+            onClick={props.onRemoveBookmark}
+          >
             Delete
-          </button>
+          </Button>
         </li>
       </Card>
     </>

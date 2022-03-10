@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Card from "./UI/Card";
 import classes from "./NewUrl.module.css";
+import Button from "./UI/Button";
 
 type NewUrlProps = {
   onAddUrl: (urlInput: string) => void;
@@ -18,7 +19,9 @@ const NewUrl: React.FC<NewUrlProps> = (props) => {
     <Card className={classes.card}>
       <div>
         <form onSubmit={urlSubmitHandler}>
-          <label className={classes.label} htmlFor="urlInput">Paste your URL here:</label>
+          <label className={classes.label} htmlFor="urlInput">
+            Paste your URL here:
+          </label>
           <input
             className={classes.form__field}
             type="url"
@@ -26,9 +29,9 @@ const NewUrl: React.FC<NewUrlProps> = (props) => {
             placeholder="https://tagregator.io"
             ref={urlInputRef}
           />
-          <button className={classes.btn} type="submit">
+          <Button className={classes.button} type="submit">
             Add New URL
-          </button>
+          </Button>
         </form>
       </div>
     </Card>
