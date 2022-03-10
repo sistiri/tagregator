@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import Layout from "./components/layout/Layout";
 import NewUrl from "./components/NewUrl";
-import BookmarkItem from "./components/BookmarkItem";
 import { Bookmark } from "./models/bookmark.model";
 
 import "./App.css";
+import BookmarkList from "./components/BookmarkList";
 
 const App: React.FC = () => {
   const [myBookmarks, setMyBookmarks] = useState<Bookmark[]>([]);
@@ -39,17 +39,11 @@ const App: React.FC = () => {
   return (
     <Layout>
       <div className="App">
-        <NewUrl onAddUrl={addNewUrlHandler}></NewUrl>
-        <ul>
-          {myBookmarks.map((bm) => (
-            <BookmarkItem
-              key={bm.id}
-              id={bm.id}
-              url={bm.url}
-              onRemoveBookmark={() => removeBookmarkHandler(bm.id)}
-            ></BookmarkItem>
-          ))}
-        </ul>
+        <NewUrl onAddUrl={addNewUrlHandler} />
+        <BookmarkList
+          bookmarks={myBookmarks}
+          onRemoveBookmark={removeBookmarkHandler}
+        ></BookmarkList>
       </div>
     </Layout>
   );
