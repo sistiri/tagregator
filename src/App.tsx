@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import NewUrl from "./components/NewUrl";
 import BookmarkItem from "./components/BookmarkItem";
@@ -9,16 +9,31 @@ import "./App.css";
 const App: React.FC = () => {
   const [myBookmarks, setMyBookmarks] = useState<Bookmark[]>([]);
 
+  useEffect(() => {
+    const localBookmarks = localStorage.getItem("myBookmarks");
+    if( localBookmarks !== null ){
+      setMyBookmarks( JSON.parse(localBookmarks) );
+    }
+  }, [])
+  
+
   const addNewUrlHandler = (url: string) => {
     if (myBookmarks.some((bm) => bm.url === url)) {
       return;
     }
     const newBookmark = new Bookmark(url);
     setMyBookmarks((prevBookmarks) => [...prevBookmarks, newBookmark]);
+
+    localStorage.setItem(
+      "myBookmarks",
+      JSON.stringify([...myBookmarks, newBookmark])
+    );
   };
 
   const removeBookmarkHandler = (id: string) => {
-    setMyBookmarks( prevBms => prevBms.filter(bm=> bm.id !== id))
+    const filteredBookmarks = myBookmarks.filter((bm) => bm.id !== id )
+    setMyBookmarks(filteredBookmarks);
+    localStorage.setItem('myBookmarks', JSON.stringify(filteredBookmarks))
   };
 
   return (
