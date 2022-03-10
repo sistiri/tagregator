@@ -26,7 +26,7 @@ const NewUrl: React.FC<NewUrlProps> = (props) => {
             className={classes.form__field}
             type="url"
             id="urlInput"
-            placeholder="https://tagregator.io"
+            placeholder="https://"
             ref={urlInputRef}
           />
           <Button className={classes.button} type="submit">
