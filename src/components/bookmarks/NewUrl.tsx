@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
-import Card from "./UI/Card";
+import Card from "../UI/Card";
+import Button from "../UI/Button";
+
 import classes from "./NewUrl.module.css";
-import Button from "./UI/Button";
 
 type NewUrlProps = {
   onAddUrl: (urlInput: string) => void;
@@ -11,8 +12,8 @@ const NewUrl: React.FC<NewUrlProps> = (props) => {
   const urlInputRef = useRef<HTMLInputElement>(null);
   const urlSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    const newUrlInput = urlInputRef.current!.value;
-    props.onAddUrl(newUrlInput);
+    const enteredUrl = urlInputRef.current!.value;
+    props.onAddUrl(enteredUrl);
   };
 
   return (
@@ -20,7 +21,7 @@ const NewUrl: React.FC<NewUrlProps> = (props) => {
       <div>
         <form onSubmit={urlSubmitHandler}>
           <label className={classes.label} htmlFor="urlInput">
-            <span>Paste your URL here:</span> 
+            <span>Paste your URL here:</span>
           </label>
           <input
             className={classes.form__field}

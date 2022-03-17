@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 import Layout from "./components/layout/Layout";
-import NewUrl from "./components/NewUrl";
+import NewUrl from "./components/bookmarks/NewUrl";
 import { Bookmark } from "./models/bookmark.model";
 
 import "./App.css";
-import BookmarkList from "./components/BookmarkList";
+import BookmarkList from "./components/bookmarks/BookmarkList";
+import Modal from "./components/UI/Modal";
+import NewTags from "./components/bookmarks/NewTags";
+import { Tag } from "./models/tag.model";
 
 const App: React.FC = () => {
   const [myBookmarks, setMyBookmarks] = useState<Bookmark[]>([]);
@@ -36,9 +39,17 @@ const App: React.FC = () => {
     localStorage.setItem("myBookmarks", JSON.stringify(filteredBookmarks));
   };
 
+  const addNewTagsHandler = (tags: Tag[]) => {
+    const newTags = [...tags]
+    console.log(newTags)
+  }
+
   return (
     <Layout>
       <div className="App">
+        <Modal>
+          <NewTags onAddTags={addNewTagsHandler}></NewTags>
+        </Modal>
         <NewUrl onAddUrl={addNewUrlHandler} />
         <BookmarkList
           bookmarks={myBookmarks}
