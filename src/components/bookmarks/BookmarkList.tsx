@@ -1,6 +1,5 @@
 import React from "react";
 import { Bookmark } from "../../models/bookmark.model";
-import { Tag } from "../../models/tag.model";
 import BookmarkItem from "./BookmarkItem";
 
 type BookmarkListProps = {

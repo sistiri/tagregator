@@ -9,27 +9,67 @@ import BookmarkList from "./components/bookmarks/BookmarkList";
 
 const App: React.FC = () => {
   const [myBookmarks, setMyBookmarks] = useState<Bookmark[]>([]);
- 
+
+  // useEffect(() => {
+  //   const localBookmarks = localStorage.getItem("myBookmarks");
+  //   if (localBookmarks !== null) {
+  //     setMyBookmarks(JSON.parse(localBookmarks));
+  //   }
+  // }, []);
 
   useEffect(() => {
-    const localBookmarks = localStorage.getItem("myBookmarks");
-    if (localBookmarks !== null) {
-      setMyBookmarks(JSON.parse(localBookmarks));
-    }
-  }, []);
+    fetch(
+      "https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks.json"
+    )
+      .then((response) => response.json())
+      .then((responseData) => {
+        console.log(responseData)
+        const loadedBookmarks = []
+        for (const key in responseData) {
+          loadedBookmarks.push({
+            id: key,
+            url: responseData[key].url,
+            date: responseData[key].date,
+            tags: responseData[key].tags,
+            snapshot: responseData[key].snapshot,
+            comments: responseData[key].comments
+          })
+        };
+        if (loadedBookmarks !== null) {
+          setMyBookmarks(loadedBookmarks);
+      }});
+    }, []);
 
   const addNewUrlHandler = (url: string) => {
-    if (myBookmarks.some((bm) => bm.url === url)) {
+    if (myBookmarks.some((bm) => bm.url === url) || url.length < 1) {
       return;
     }
 
     const newBookmark = new Bookmark(url);
-    setMyBookmarks((prevBookmarks) => [...prevBookmarks, newBookmark]);
-
-    localStorage.setItem(
-      "myBookmarks",
-      JSON.stringify([...myBookmarks, newBookmark])
-    );
+    console.log(newBookmark)
+    fetch(
+      "https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks.json",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          url: newBookmark.url,
+          date: newBookmark.date,
+          tags: newBookmark.date
+        }),
+        headers: { "Content-Type": "application/json" },
+      }
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseData) => {
+        setMyBookmarks((prevBookmarks) => [...prevBookmarks, newBookmark]);
+        
+      });
+    // localStorage.setItem(
+    //   "myBookmarks",
+    //   JSON.stringify([...myBookmarks, newBookmark])
+    // );
   };
 
   const removeBookmarkHandler = (id: string) => {
