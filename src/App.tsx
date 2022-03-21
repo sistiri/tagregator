@@ -48,7 +48,7 @@ const App: React.FC = () => {
 
 const newBookmarkBase = {
   url: url,
-  date: new Date()
+  date: new Date(),
 }
     fetch(
       "https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks.json",
@@ -92,6 +92,13 @@ const newBookmarkBase = {
     const newMyBookmarks = [...myBookmarks]
     newMyBookmarks[bookmarkIndexToEdit].tags = enteredTags
     setMyBookmarks(newMyBookmarks)
+    fetch(
+      `https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks/${id}.json`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({tags: enteredTags}),
+        headers: { "Content-Type": "application/json" },
+      })
   };
 
   return (
