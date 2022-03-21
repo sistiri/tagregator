@@ -4,7 +4,6 @@ import Card from "../UI/Card";
 import classes from "./BookmarkItem.module.css";
 import Button from "../UI/Button";
 import NewTags from "./NewTags";
-import { Tag } from "../../models/tag.model";
 
 type BookMarkItemProps = {
   key: string;

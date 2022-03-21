@@ -77,12 +77,21 @@ const newBookmarkBase = {
   const removeBookmarkHandler = (id: string) => {
     const filteredBookmarks = myBookmarks.filter((bm) => bm.id !== id);
     setMyBookmarks(filteredBookmarks);
-    localStorage.setItem("myBookmarks", JSON.stringify(filteredBookmarks));
+    fetch(
+      `https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks/${id}.json`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      }
+    )
+    // localStorage.setItem("myBookmarks", JSON.stringify(filteredBookmarks));
   };
 
   const editTagsHandler = (id: string, enteredTags: string[]) => {
-    const newTags = [...enteredTags];
-    console.log(newTags);
+    const bookmarkIndexToEdit = myBookmarks.findIndex((bm) => bm.id === id)
+    const newMyBookmarks = [...myBookmarks]
+    newMyBookmarks[bookmarkIndexToEdit].tags = enteredTags
+    setMyBookmarks(newMyBookmarks)
   };
 
   return (

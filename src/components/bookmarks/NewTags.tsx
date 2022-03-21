@@ -1,5 +1,4 @@
 import React, { Fragment, useRef } from "react";
-import { Tag } from "../../models/tag.model";
 import Button from "../UI/Button";
 import Modal from "../UI/Modal";
 
