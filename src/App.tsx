@@ -23,8 +23,8 @@ const App: React.FC = () => {
     )
       .then((response) => response.json())
       .then((responseData) => {
-        console.log(responseData)
-        const loadedBookmarks = []
+        console.log(responseData);
+        const loadedBookmarks = [];
         for (const key in responseData) {
           loadedBookmarks.push({
             id: key,
@@ -32,30 +32,29 @@ const App: React.FC = () => {
             date: responseData[key].date,
             tags: responseData[key].tags,
             snapshot: responseData[key].snapshot,
-            comments: responseData[key].comments
-          })
-        };
+            comments: responseData[key].comments,
+          });
+        }
         if (loadedBookmarks !== null) {
           setMyBookmarks(loadedBookmarks);
-      }});
-    }, []);
+        }
+      });
+  }, []);
 
   const addNewUrlHandler = (url: string) => {
     if (myBookmarks.some((bm) => bm.url === url) || url.length < 1) {
       return;
     }
 
-    const newBookmark = new Bookmark(url);
-    console.log(newBookmark)
+const newBookmarkBase = {
+  url: url,
+  date: new Date()
+}
     fetch(
       "https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks.json",
       {
         method: "POST",
-        body: JSON.stringify({
-          url: newBookmark.url,
-          date: newBookmark.date,
-          tags: newBookmark.date
-        }),
+        body: JSON.stringify(newBookmarkBase),
         headers: { "Content-Type": "application/json" },
       }
     )
@@ -63,8 +62,11 @@ const App: React.FC = () => {
         return response.json();
       })
       .then((responseData) => {
-        setMyBookmarks((prevBookmarks) => [...prevBookmarks, newBookmark]);
-        
+        const newBookmark = new Bookmark(url)
+        setMyBookmarks((prevBookmarks) => [
+          ...prevBookmarks,
+          {...newBookmark, ...{id: responseData.name} },
+        ]);
       });
     // localStorage.setItem(
     //   "myBookmarks",

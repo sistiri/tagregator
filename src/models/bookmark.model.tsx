@@ -1,5 +1,5 @@
 export class Bookmark {
-  id: string;
+  id: string = '';
   url: string;
   date: Date;
   tags: string[];
@@ -7,7 +7,6 @@ export class Bookmark {
   comments?: Comment[];
 
   constructor(url: string) {
-    this.id = Math.random().toString();
     this.url = url;
     this.date = new Date();
     this.tags = [];
