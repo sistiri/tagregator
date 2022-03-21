@@ -6,12 +6,10 @@ import { Bookmark } from "./models/bookmark.model";
 
 import "./App.css";
 import BookmarkList from "./components/bookmarks/BookmarkList";
-import Modal from "./components/UI/Modal";
-import NewTags from "./components/bookmarks/NewTags";
-import { Tag } from "./models/tag.model";
 
 const App: React.FC = () => {
   const [myBookmarks, setMyBookmarks] = useState<Bookmark[]>([]);
+ 
 
   useEffect(() => {
     const localBookmarks = localStorage.getItem("myBookmarks");
@@ -24,6 +22,7 @@ const App: React.FC = () => {
     if (myBookmarks.some((bm) => bm.url === url)) {
       return;
     }
+
     const newBookmark = new Bookmark(url);
     setMyBookmarks((prevBookmarks) => [...prevBookmarks, newBookmark]);
 
@@ -39,21 +38,19 @@ const App: React.FC = () => {
     localStorage.setItem("myBookmarks", JSON.stringify(filteredBookmarks));
   };
 
-  const addNewTagsHandler = (tags: Tag[]) => {
-    const newTags = [...tags]
-    console.log(newTags)
-  }
+  const editTagsHandler = (id: string, enteredTags: string[]) => {
+    const newTags = [...enteredTags];
+    console.log(newTags);
+  };
 
   return (
     <Layout>
       <div className="App">
-        <Modal>
-          <NewTags onAddTags={addNewTagsHandler}></NewTags>
-        </Modal>
         <NewUrl onAddUrl={addNewUrlHandler} />
         <BookmarkList
           bookmarks={myBookmarks}
           onRemoveBookmark={removeBookmarkHandler}
+          onEditTags={editTagsHandler}
         ></BookmarkList>
       </div>
     </Layout>

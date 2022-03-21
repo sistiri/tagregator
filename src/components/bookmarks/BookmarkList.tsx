@@ -1,10 +1,12 @@
 import React from "react";
 import { Bookmark } from "../../models/bookmark.model";
+import { Tag } from "../../models/tag.model";
 import BookmarkItem from "./BookmarkItem";
 
 type BookmarkListProps = {
     bookmarks: Bookmark[];
     onRemoveBookmark: (id: string) => void;
+    onEditTags: (id: string, enteredTags: string[]) => void;
 }
 
 const BookmarkList = (props: BookmarkListProps) => {
@@ -16,7 +18,9 @@ const BookmarkList = (props: BookmarkListProps) => {
               key={bm.id}
               id={bm.id}
               url={bm.url}
+              tags={bm.tags}
               onRemoveBookmark={() => props.onRemoveBookmark(bm.id)}
+              onEditTags={props.onEditTags}
             ></BookmarkItem>
           ))}
         </ul>
