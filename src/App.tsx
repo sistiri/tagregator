@@ -87,7 +87,7 @@ const newBookmarkBase = {
     // localStorage.setItem("myBookmarks", JSON.stringify(filteredBookmarks));
   };
 
-  const editTagsHandler = (id: string, enteredTags: string[]) => {
+  const addTagsHandler = (id: string, enteredTags: string[]) => {
     const bookmarkIndexToEdit = myBookmarks.findIndex((bm) => bm.id === id)
     const newMyBookmarks = [...myBookmarks]
     newMyBookmarks[bookmarkIndexToEdit].tags = enteredTags
@@ -108,7 +108,7 @@ const newBookmarkBase = {
         <BookmarkList
           bookmarks={myBookmarks}
           onRemoveBookmark={removeBookmarkHandler}
-          onEditTags={editTagsHandler}
+          onAddTags={addTagsHandler}
         ></BookmarkList>
       </div>
     </Layout>

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Card from "../UI/Card";
 
 import classes from "./BookmarkItem.module.css";
@@ -11,14 +11,18 @@ type BookMarkItemProps = {
   url: string;
   tags: string[];
   onRemoveBookmark: () => void;
-  onEditTags: (id: string, enteredTags: string[]) => void;
+  onAddTags: (id: string, enteredTags: string[]) => void;
 };
 const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
   const [isNewTagsModalShown, setIsNewTagsModalShown] = useState(false);
 
-  const openEditTagsModal = () => {
+  const showEditTagsModal = () => {
     setIsNewTagsModalShown(true);
   };
+
+  const hideEditTagsModalHandler = () => {
+    setIsNewTagsModalShown(false)
+  }
 
   return (
     <>
@@ -29,7 +33,7 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
             <Button
               className={classes.button}
               type="button"
-              onClick={openEditTagsModal}
+              onClick={showEditTagsModal}
             >
               Edit Tags
             </Button>
@@ -46,7 +50,8 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
             <NewTags
               id={props.id}
               url={props.url}
-              onEditTags={props.onEditTags}
+              onAddTags={props.onAddTags}
+              onCancel={hideEditTagsModalHandler}
             ></NewTags>
           )}
         </Fragment>

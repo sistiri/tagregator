@@ -5,7 +5,7 @@ import BookmarkItem from "./BookmarkItem";
 type BookmarkListProps = {
     bookmarks: Bookmark[];
     onRemoveBookmark: (id: string) => void;
-    onEditTags: (id: string, enteredTags: string[]) => void;
+    onAddTags: (id: string, enteredTags: string[]) => void;
 }
 
 const BookmarkList = (props: BookmarkListProps) => {
@@ -19,7 +19,7 @@ const BookmarkList = (props: BookmarkListProps) => {
               url={bm.url}
               tags={bm.tags}
               onRemoveBookmark={() => props.onRemoveBookmark(bm.id)}
-              onEditTags={props.onEditTags}
+              onAddTags={props.onAddTags}
             ></BookmarkItem>
           ))}
         </ul>
