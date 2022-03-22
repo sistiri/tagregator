@@ -1,4 +1,5 @@
 import React from "react";
+import { RequestConfig } from "../../hooks/use-http";
 import { Bookmark } from "../../models/bookmark.model";
 import Button from "../UI/Button";
 import BookmarkItem from "./BookmarkItem";
@@ -7,7 +8,7 @@ type BookmarksProps = {
   bookmarks: Bookmark[];
   loading: boolean;
   error: any;
-  onFetch: () => {};
+  onFetch: (requestConfig: RequestConfig, applyData: Function) => Promise<void>;
   onRemoveBookmark: (id: string) => void;
   onAddTags: (id: string, enteredTags: string[]) => void;
 };
@@ -36,7 +37,7 @@ const Bookmarks = (props: BookmarksProps) => {
 
   if (props.error) {
     content = (
-      <Button className="button" type="button" onClick={props.onFetch}>
+      <Button className="button" type="button" onFetch={props.onFetch}>
         Try again!
       </Button>
     );

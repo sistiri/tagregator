@@ -11,37 +11,35 @@ import Bookmarks from "./components/bookmarks/Bookmarks";
 const App: React.FC = () => {
   const [myBookmarks, setMyBookmarks] = useState<Bookmark[]>([]);
 
-  const transformBookmarks = (bookmarksObj: { [id: string]: Bookmark }) => {
-    const loadedBookmarks = [];
-    for (const key in bookmarksObj) {
-      loadedBookmarks.push({
-        id: key,
-        url: bookmarksObj[key].url,
-        date: bookmarksObj[key].date,
-        tags: bookmarksObj[key].tags,
-        snapshot: bookmarksObj[key].snapshot,
-        comments: bookmarksObj[key].comments,
-      });
-    }
-    // if (loadedBookmarks !== null) {
-      setMyBookmarks(loadedBookmarks);
-    // }
-  };
-
   const {
     isLoading,
     error,
     sendRequest: fetchBookmarks,
-  } = useHttp(
-    {
-      url: "https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks.json",
-    },
-    transformBookmarks
-  );
+  } = useHttp();
 
   useEffect(() => {
-    fetchBookmarks();
-  }, []);
+
+    const transformBookmarks = (bookmarksObj: { [id: string]: Bookmark }) => {
+      const loadedBookmarks = [];
+      for (const key in bookmarksObj) {
+        loadedBookmarks.push({
+          id: key,
+          url: bookmarksObj[key].url,
+          date: bookmarksObj[key].date,
+          tags: bookmarksObj[key].tags,
+          snapshot: bookmarksObj[key].snapshot,
+          comments: bookmarksObj[key].comments,
+        });
+      }
+      // if (loadedBookmarks !== null) {
+      setMyBookmarks(loadedBookmarks);
+      // }
+    };
+
+    fetchBookmarks({
+      url: "https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks.json",
+    }, transformBookmarks);
+  }, [fetchBookmarks]);
 
   const addNewUrlHandler = (url: string) => {
     if (myBookmarks.some((bm) => bm.url === url) || url.length < 1) {
