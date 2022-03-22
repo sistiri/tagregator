@@ -4,6 +4,9 @@ import BookmarkItem from "./BookmarkItem";
 
 type BookmarkListProps = {
     bookmarks: Bookmark[];
+    loading: boolean;
+    error: any;
+    onFetch: () => {}
     onRemoveBookmark: (id: string) => void;
     onAddTags: (id: string, enteredTags: string[]) => void;
 }

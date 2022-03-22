@@ -2,9 +2,9 @@ import { useState } from "react";
 
 type RequestConfig = {
     url: string;
-    method: string;
-    headers: HeadersInit;
-    body: BodyInit;
+    method?: string;
+    headers?: HeadersInit;
+    body?: BodyInit;
 }
 
 const useHttp = (requestConfig: RequestConfig, applyData: Function) => {
