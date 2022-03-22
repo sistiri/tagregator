@@ -27,6 +27,7 @@ const sendRequest = async () => {
 
         const data = await response.json()
         applyData(data)
+        setisLoading(false)
     }
     catch (err: any) {
         setError(err.message)

@@ -6,7 +6,7 @@ import { Bookmark } from "./models/bookmark.model";
 import useHttp from "./hooks/use-http";
 
 import "./App.css";
-import BookmarkList from "./components/bookmarks/BookmarkList";
+import Bookmarks from "./components/bookmarks/Bookmarks";
 
 const App: React.FC = () => {
   const [myBookmarks, setMyBookmarks] = useState<Bookmark[]>([]);
@@ -23,9 +23,9 @@ const App: React.FC = () => {
         comments: bookmarksObj[key].comments,
       });
     }
-    if (loadedBookmarks !== null) {
+    // if (loadedBookmarks !== null) {
       setMyBookmarks(loadedBookmarks);
-    }
+    // }
   };
 
   const {
@@ -113,14 +113,14 @@ const App: React.FC = () => {
     <Layout>
       <div className="App">
         <NewUrl onAddUrl={addNewUrlHandler} />
-        <BookmarkList
+        <Bookmarks
           bookmarks={myBookmarks}
           loading={isLoading}
           error={error}
           onFetch={fetchBookmarks}
           onRemoveBookmark={removeBookmarkHandler}
           onAddTags={addTagsHandler}
-        ></BookmarkList>
+        />
       </div>
     </Layout>
   );
