@@ -90,7 +90,8 @@ const newBookmarkBase = {
   const addTagsHandler = (id: string, enteredTags: string[]) => {
     const bookmarkIndexToEdit = myBookmarks.findIndex((bm) => bm.id === id)
     const newMyBookmarks = [...myBookmarks]
-    newMyBookmarks[bookmarkIndexToEdit].tags = enteredTags
+    newMyBookmarks[bookmarkIndexToEdit].tags = [...newMyBookmarks[bookmarkIndexToEdit].tags, ...enteredTags]
+    console.log(newMyBookmarks[bookmarkIndexToEdit].tags)
     setMyBookmarks(newMyBookmarks)
     fetch(
       `https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks/${id}.json`,

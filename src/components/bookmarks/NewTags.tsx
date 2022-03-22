@@ -16,7 +16,7 @@ const NewTags: React.FC<NewTagsProps> = (props) => {
 
   const newTagsInputHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    const enteredTags = (newTagInputRef.current!.value.split(','))
+    const enteredTags = (newTagInputRef.current!.value.split(',').map(t => t.trim()))
     console.log(enteredTags);
     props.onAddTags(props.id, enteredTags);
     props.onCancel()

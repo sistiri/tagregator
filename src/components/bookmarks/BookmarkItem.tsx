@@ -21,8 +21,8 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
   };
 
   const hideEditTagsModalHandler = () => {
-    setIsNewTagsModalShown(false)
-  }
+    setIsNewTagsModalShown(false);
+  };
 
   return (
     <>
@@ -45,7 +45,11 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
               Delete
             </Button>
           </li>
-          <div>{props.tags}</div>
+          <div>
+            {props.tags.map((t) => (
+              <span className={classes.tag}>{t}</span>))
+            }
+          </div>
           {isNewTagsModalShown && (
             <NewTags
               id={props.id}
