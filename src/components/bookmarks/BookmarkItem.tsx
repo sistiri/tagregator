@@ -1,9 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import Card from "../UI/Card";
 
 import classes from "./BookmarkItem.module.css";
 import Button from "../UI/Button";
 import NewTags from "./NewTags";
+import Tags from "./Tags";
 
 type BookMarkItemProps = {
   key: string;
@@ -45,11 +46,9 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
               Delete
             </Button>
           </li>
-          <div>
-            {props.tags.map((t) => (
-              <span className={classes.tag}>{t}</span>))
-            }
-          </div>
+          <Tags tags={props.tags}>
+            
+          </Tags>
           {isNewTagsModalShown && (
             <NewTags
               id={props.id}
