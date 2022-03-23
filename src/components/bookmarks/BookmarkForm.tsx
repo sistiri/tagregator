@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
 import Button from "../UI/Button";
 
-import classes from './BookmarkForm.module.css'
+import classes from "./BookmarkForm.module.css";
 
 type BookmarkFormProps = {
-    enteredUrlHandler: (enteredUrl: string) => void
+  onEnterUrl: (enteredUrl: string) => void;
+  loading: boolean;
 };
 
 const BookmarkForm = (props: BookmarkFormProps) => {
@@ -14,7 +15,7 @@ const BookmarkForm = (props: BookmarkFormProps) => {
     event.preventDefault();
     const enteredUrl = urlInputRef.current!.value;
     if (enteredUrl.trim().length > 0) {
-      props.enteredUrlHandler(enteredUrl);
+      props.onEnterUrl(enteredUrl);
     }
   };
 

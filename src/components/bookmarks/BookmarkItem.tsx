@@ -46,9 +46,7 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
               Delete
             </Button>
           </li>
-          <Tags tags={props.tags}>
-            
-          </Tags>
+          <Tags tags={props.tags} onShowAddTags={showEditTagsModal}/>
           {isNewTagsModalShown && (
             <NewTags
               id={props.id}

@@ -14,6 +14,7 @@ type BookmarksProps = {
 };
 
 const Bookmarks = (props: BookmarksProps) => {
+  console.log('>>> Bookmarks rendered')
   let bookmarkList = <h2> No Bookmarks found. Start adding some!</h2>;
 
   if (props.bookmarks.length > 0) {
