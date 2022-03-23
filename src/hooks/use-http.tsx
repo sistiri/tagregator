@@ -4,7 +4,7 @@ export type RequestConfig = {
   url: string;
   method?: string;
   headers?: HeadersInit;
-  body?: BodyInit;
+  body?: {url: string; date: Date, tags: string[]};
 };
 
 const useHttp = () => {
@@ -31,6 +31,7 @@ const useHttp = () => {
       setError(err.message);
     }
     setisLoading(false);
+    
   }, []);
 
   return {
