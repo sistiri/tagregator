@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .button {
     background: #7f8ff4;
     color: #fff;
@@ -7,6 +8,8 @@
     background: darken(#7f8ff4, 4%);
   }
  
+=======
+>>>>>>> 71239a859a428f71d00f08b3de2018233dd299de
  /* form */
  .form__field {
     width: 240px;
