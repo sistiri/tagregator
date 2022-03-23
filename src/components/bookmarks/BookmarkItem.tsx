@@ -32,7 +32,7 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
           <li key={props.id} id={props.id}>
             <span>{props.url}</span>
             <Button
-              className={classes.button}
+              className={`${classes.button} ${classes.editBtn}`}
               type="button"
               onClick={showEditTagsModal}
             >
@@ -46,7 +46,7 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
               Delete
             </Button>
           </li>
-          <Tags tags={props.tags} onShowAddTags={showEditTagsModal}/>
+          <Tags tags={props.tags} onShowAddTags={showEditTagsModal} />
           {isNewTagsModalShown && (
             <NewTags
               id={props.id}

@@ -6,10 +6,13 @@ import classes from "./Button.module.css";
 type buttonProps = {
   className: string;
   children: ReactNode;
-  type: "button" | "submit" | "reset" | undefined;
+  type: "button" | "submit" | "reset";
   onClick?: () => void;
   onSubmit?: () => void;
-  onFetch?: (requestConfig: RequestConfig, applyData: Function) => Promise<void>
+  onFetch?: (
+    requestConfig: RequestConfig,
+    applyData: Function
+  ) => Promise<void>;
 };
 
 const Button = (props: buttonProps) => {

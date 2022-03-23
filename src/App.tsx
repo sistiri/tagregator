@@ -66,7 +66,7 @@ const App: React.FC = () => {
     if (!myBookmarks[bookmarkIndexToEdit].tags) {
       allTags = enteredTags;
     } else {
-      allTags = [...newMyBookmarks[bookmarkIndexToEdit].tags, ...enteredTags];
+      allTags = [...newMyBookmarks[bookmarkIndexToEdit].tags!, ...enteredTags];
       newMyBookmarks[bookmarkIndexToEdit].tags = allTags;
     }
 

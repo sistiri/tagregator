@@ -10,7 +10,7 @@ const MyTags = (props: MyTagsProps) => {
 
   return (
     <Fragment>
-       <Tags tags={props.tags}></Tags>
+       {/* <Tags tags={props.tags} onShowAddTags={showEditTagsModal}></Tags> */}
 
     </Fragment>
   )
