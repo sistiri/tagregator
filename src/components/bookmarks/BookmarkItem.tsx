@@ -51,6 +51,7 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
             <NewTags
               id={props.id}
               url={props.url}
+              tags={props.tags}
               onAddTags={props.onAddTags}
               onCancel={hideEditTagsModalHandler}
             ></NewTags>

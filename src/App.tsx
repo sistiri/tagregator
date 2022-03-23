@@ -67,11 +67,11 @@ const App: React.FC = () => {
       allTags = enteredTags;
     } else {
       allTags = [...newMyBookmarks[bookmarkIndexToEdit].tags!, ...enteredTags];
-      newMyBookmarks[bookmarkIndexToEdit].tags = allTags;
     }
+    newMyBookmarks[bookmarkIndexToEdit].tags = allTags;
 
     console.log(newMyBookmarks[bookmarkIndexToEdit].tags);
-    setMyBookmarks(newMyBookmarks);
+    setMyBookmarks(prevBookMarks => prevBookMarks=newMyBookmarks);
     fetch(
       `https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks/${id}.json`,
       {
@@ -79,7 +79,9 @@ const App: React.FC = () => {
         body: JSON.stringify({ tags: allTags }),
         headers: { "Content-Type": "application/json" },
       }
-    );
+      );
+      console.log(newMyBookmarks)
+      
   };
 
   return (

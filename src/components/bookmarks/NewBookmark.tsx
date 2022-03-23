@@ -23,7 +23,6 @@ const NewBookmark: React.FC<NewBookmarkProps> = (props) => {
       ...newBookmarkBase,
       ...{ id: responseData.name },
     };
-    console.log(newBookmarkBase);
     console.log(createdBookmark);
     props.onAddBookmark(createdBookmark);
   };
