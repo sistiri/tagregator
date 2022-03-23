@@ -17,9 +17,20 @@ const NewTags: React.FC<NewTagsProps> = (props) => {
 
   const newTagsInputHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    const enteredTags = newTagInputRef
-      .current!.value.split(",")
-      .map((t) => t.trim());
+    let enteredTags: string[];
+    if (
+      newTagInputRef.current!.value !== null &&
+      newTagInputRef.current!.value.length > 0
+    ) {
+      enteredTags = newTagInputRef
+        .current!.value.split(",")
+        .map((t) => t.trim());
+    } else {
+      console.log('No valid tag has been added!')
+      props.onCancel();
+      return;
+    }
+
     let uniqueTags: string[];
 
     const filterTags = (enteredTags: string[], oldTags: string[]) => {
@@ -35,8 +46,10 @@ const NewTags: React.FC<NewTagsProps> = (props) => {
       uniqueTags = Array.from(new Set([...enteredTags]));
     }
 
-    // console.log(enteredTags, props.tags, uniqueTags);
-    uniqueTags.length > 0 ? props.onAddTags(props.id, uniqueTags) : console.log('No unique tags added!') ;
+    console.log(enteredTags, props.tags, uniqueTags);
+    uniqueTags.length > 0
+      ? props.onAddTags(props.id, uniqueTags)
+      : console.log("No unique tags added!");
     props.onCancel();
   };
 

@@ -15,6 +15,8 @@ type BookMarkItemProps = {
   tags?: string[];
 };
 const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
+  console.log('>>>>> BookarkItem rendered')
+
   const [isNewTagsModalShown, setIsNewTagsModalShown] = useState(false);
 
   const showEditTagsModal = () => {

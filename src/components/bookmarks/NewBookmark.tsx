@@ -13,6 +13,8 @@ type NewBookmarkProps = {
 };
 
 const NewBookmark: React.FC<NewBookmarkProps> = (props) => {
+  console.log('>>>>> NewBookmark rendered')
+
   const { isLoading, error, sendRequest: postBookmarkRequest } = useHttp();
 
   const createBookmark = (

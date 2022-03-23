@@ -10,6 +10,7 @@ type TagsProps = {
 };
 
 const Tags: React.FC<TagsProps> = (props) => {
+  console.log('>>>>> Tags rendered')
   return (
     <Fragment>
       {props.tags ? (
