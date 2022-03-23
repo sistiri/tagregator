@@ -2,7 +2,7 @@ export class Bookmark {
   id: string = '';
   url: string;
   date: Date;
-  tags: string[];
+  tags?: string[];
   snapshot?: string;
   comments?: Comment[];
 

@@ -10,9 +10,9 @@ type BookMarkItemProps = {
   key: string;
   id: string;
   url: string;
-  tags: string[];
   onRemoveBookmark: () => void;
   onAddTags: (id: string, enteredTags: string[]) => void;
+  tags?: string[];
 };
 const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
   const [isNewTagsModalShown, setIsNewTagsModalShown] = useState(false);

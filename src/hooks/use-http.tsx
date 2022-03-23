@@ -4,7 +4,7 @@ export type RequestConfig = {
   url: string;
   method?: string;
   headers?: HeadersInit;
-  body?: {url: string; date: Date, tags: string[]};
+  body?: {url: string; date: Date, tags?: string[]};
 };
 
 const useHttp = () => {

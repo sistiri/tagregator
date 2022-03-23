@@ -3,8 +3,8 @@ import Button from "../UI/Button";
 import classes from "./Tags.module.css";
 
 type TagsProps = {
-  tags: string[];
   onShowAddTags: () => void;
+  tags?: string[];
   filteredBy?: string;
   filterPhrase?: string;
 };

@@ -16,7 +16,7 @@ const NewBookmark: React.FC<NewBookmarkProps> = (props) => {
   const { isLoading, error, sendRequest: postBookmarkRequest } = useHttp();
 
   const createBookmark = (
-    newBookmarkBase: { url: string; date: Date, tags: string[] },
+    newBookmarkBase: { url: string; date: Date },
     responseData: { name: string }
   ) => {
     const createdBookmark: Bookmark = {
@@ -38,7 +38,6 @@ const NewBookmark: React.FC<NewBookmarkProps> = (props) => {
     const newBookmarkBase = {
       url: enteredUrl,
       date: new Date(),
-      tags: []
     };
 
     postBookmarkRequest(
@@ -50,7 +49,7 @@ const NewBookmark: React.FC<NewBookmarkProps> = (props) => {
       },
       createBookmark.bind(null, newBookmarkBase)
     );
-    
+
   };
 
   return (
