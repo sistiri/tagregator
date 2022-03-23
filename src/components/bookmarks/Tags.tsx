@@ -1,5 +1,4 @@
-import { Fragment } from "react";
-import Button from "../UI/Button";
+// import Button from "../UI/Button";
 import classes from "./Tags.module.css";
 
 type TagsProps = {
