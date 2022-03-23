@@ -12,23 +12,23 @@ type TagsProps = {
 const Tags: React.FC<TagsProps> = (props) => {
   console.log('>>>>> Tags rendered')
   return (
-    <Fragment>
+    <div>
       {props.tags ? (
         props.tags.map((t: string) => (
           <span key={t} className={classes.tag}>
             {t}
           </span>
         ))
-      ) : (
-        <Button
-          className={classes.button}
-          type="button"
-          onClick={props.onShowAddTags}
-        >
-          Add some tags!
-        </Button>
+      ) : ( <h5>No tags added yet...</h5>
+        // <Button
+        //   className={classes.button}
+        //   type="button"
+        //   onClick={props.onShowAddTags}
+        // >
+        //   Add some tags!
+        // </Button>
       )}
-    </Fragment>
+    </div>
   );
 };
 

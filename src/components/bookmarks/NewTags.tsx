@@ -3,6 +3,7 @@ import Button from "../UI/Button";
 import Modal from "../UI/Modal";
 
 import classes from "./NewTags.module.css";
+import Tags from "./Tags";
 
 type NewTagsProps = {
   id: string;
@@ -70,12 +71,13 @@ const NewTags: React.FC<NewTagsProps> = (props) => {
           <Button className={classes.button} type="submit">
             Add New Tags
           </Button>
+          <Tags tags={props.tags} onShowAddTags={()=> {}} />
           <Button
             className={classes.button}
             onClick={props.onCancel}
             type="button"
           >
-            Cancel
+            Done
           </Button>
         </form>
         <div></div>
