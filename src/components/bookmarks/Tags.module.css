@@ -17,9 +17,10 @@
     margin:2px 2px 2px 20px;
     font: normal 16px sans-serif;
     position: relative;
-    cursor: default;
-    box-shadow:1px 1px 0 rgba(0,0,0,.2);
-    animation: swing 1s ;
+    /* box-shadow:1px 1px 0 rgba(0,0,0,.2); */
+    /* animation: swing 1s ; */
+    text-decoration: none;
+    cursor: pointer
   }
   
   .tag:before{
@@ -27,7 +28,7 @@
     position: absolute;
     width: 0;
     background: inherit;
-    height: 10px;
+    height: 8px;
     border: 10px solid #fafafa;
     border-right-color: transparent;
     -webkit-border-radius: 10px 0 0 10px;
@@ -39,14 +40,14 @@
   
   .tag:after{
     content: "";
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
     background: #FFF;
     position: absolute;
-    left: -3px;
+    left: -1px;
     top: 12px;
-    box-shadow:inset 1px 1px 0 #CCC;
+    /* box-shadow:inset 1px 1px 0 #CCC; */
   }

@@ -1,4 +1,5 @@
 // import Button from "../UI/Button";
+import { Link } from "react-router-dom";
 import classes from "./Tags.module.css";
 
 type TagsProps = {
@@ -15,10 +16,10 @@ const Tags: React.FC<TagsProps> = (props) => {
   return (
     <div>
       {props.tags ? (
-        props.tags.map((t: string) => (
-          <span key={t} className={classes.tag}>
-            {t}
-          </span>
+        props.tags.map((tag: string) => (
+          <Link to={`../mytags/${tag}`} key={tag} className={classes.tag}>
+            {tag}
+          </Link>
         ))
       ) : ( <h5>No tags added yet...</h5>
         // <Button
