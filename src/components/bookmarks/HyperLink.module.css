@@ -1,0 +1,18 @@
+.hyperlink {
+    font-size: larger;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-right: auto;
+
+    display: inline-block;
+    line-height: 1.3;
+    margin-bottom: 3px;
+    padding-top: 5px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #1a0dab;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: left;
+  }

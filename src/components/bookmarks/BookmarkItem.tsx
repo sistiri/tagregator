@@ -5,6 +5,7 @@ import classes from "./BookmarkItem.module.css";
 import Button from "../UI/Button";
 import NewTags from "./NewTags";
 import Tags from "./Tags";
+import HyperLink from "./HyperLink";
 
 type BookMarkItemProps = {
   key: string;
@@ -32,7 +33,7 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
       <Card className={classes.card}>
         <Fragment>
           <li key={props.id} id={props.id}>
-            <span>{props.url}</span>
+            <HyperLink url={props.url} />
             <Button
               className={`${classes.button} ${classes.editBtn}`}
               type="button"
