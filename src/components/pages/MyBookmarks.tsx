@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import Layout from "../layout/Layout";
 import NewBookmark from "../bookmarks/NewBookmark";
+import Bookmarks from "../bookmarks/Bookmarks";
 import { Bookmark } from "../../models/bookmark.model";
 import useHttp from "../../hooks/use-http";
-
-import classes from "./MyBookmarks.module.css";
-import Bookmarks from "../bookmarks/Bookmarks";
+// import classes from "./MyBookmarks.module.css";
 
 const MyBookmarks: React.FC = () => {
   const [myBookmarks, setMyBookmarks] = useState<Bookmark[]>([]);
@@ -71,7 +69,7 @@ const MyBookmarks: React.FC = () => {
     newMyBookmarks[bookmarkIndexToEdit].tags = allTags;
 
     console.log(newMyBookmarks[bookmarkIndexToEdit].tags);
-    setMyBookmarks(prevBookMarks => prevBookMarks=newMyBookmarks);
+    setMyBookmarks((prevBookMarks) => (prevBookMarks = newMyBookmarks));
     fetch(
       `https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks/${id}.json`,
       {
@@ -79,28 +77,25 @@ const MyBookmarks: React.FC = () => {
         body: JSON.stringify({ tags: allTags }),
         headers: { "Content-Type": "application/json" },
       }
-      );
-      console.log(newMyBookmarks)
-      
+    );
+    console.log(newMyBookmarks);
   };
 
   return (
-    <Layout>
-      <div className="MyBookmarks">
-        <NewBookmark
-          onAddBookmark={addBookmarkHandler}
-          myBookmarks={myBookmarks}
-        />
-        <Bookmarks
-          bookmarks={myBookmarks}
-          loading={isLoading}
-          error={error}
-          onFetch={fetchBookmarks}
-          onRemoveBookmark={removeBookmarkHandler}
-          onAddTags={addTagsHandler}
-        />
-      </div>
-    </Layout>
+    <div className="MyBookmarks">
+      <NewBookmark
+        onAddBookmark={addBookmarkHandler}
+        myBookmarks={myBookmarks}
+      />
+      <Bookmarks
+        bookmarks={myBookmarks}
+        loading={isLoading}
+        error={error}
+        onFetch={fetchBookmarks}
+        onRemoveBookmark={removeBookmarkHandler}
+        onAddTags={addTagsHandler}
+      />
+    </div>
   );
 };
 

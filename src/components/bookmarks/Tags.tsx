@@ -2,7 +2,9 @@
 import classes from "./Tags.module.css";
 
 type TagsProps = {
-  onShowAddTags: () => void;
+  loading?: boolean;
+  error?: any;
+  onShowAddTags?: () => void;
   tags?: string[];
   filteredBy?: string;
   filterPhrase?: string;

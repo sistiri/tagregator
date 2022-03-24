@@ -44,7 +44,7 @@ const NewTags: React.FC<NewTagsProps> = (props) => {
         <p>Link: {props.url}</p>
         <NewTagsForm onEnterTags={enterTagsHandler} />
 
-        <Tags tags={props.tags} onShowAddTags={() => {}} />
+        <Tags tags={props.tags} />
         <Button
           className={classes.button}
           onClick={props.onCancel}
