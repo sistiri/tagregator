@@ -7,47 +7,53 @@
   background: darken(#7f8ff4, 4%);
 } */
 
+.tag:hover {
+  background: rgb(40, 175, 92);
+  color: #fff;
+
+}
+
 /* Tag Design Source: https://blog.avada.io/css/input-text#colored-tags-jordan-simonds */
 
-.tag{
-    display: inline-block;
-    background: #6AD;
-    color: #FFF;
-    padding: 5px 10px;
-    margin:2px 2px 2px 20px;
-    font: normal 16px sans-serif;
-    position: relative;
-    /* box-shadow:1px 1px 0 rgba(0,0,0,.2); */
-    /* animation: swing 1s ; */
-    text-decoration: none;
-    cursor: pointer
-  }
-  
-  .tag:before{
-    content: "";
-    position: absolute;
-    width: 0;
-    background: inherit;
-    height: 8px;
-    border: 10px solid #fafafa;
-    border-right-color: transparent;
-    -webkit-border-radius: 10px 0 0 10px;
-    -moz-border-radius:10px 0 0 10px;
-    border-radius:10px 0 0 10px;
-    left: -20px;
-    top: 0;
-  }
-  
-  .tag:after{
-    content: "";
-    width: 4px;
-    height: 4px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    background: #FFF;
-    position: absolute;
-    left: -1px;
-    top: 12px;
-    /* box-shadow:inset 1px 1px 0 #CCC; */
-  }
+.tag {
+  display: inline-block;
+  background: #6ad;
+  color: #fff;
+  padding: 5px 10px;
+  margin: 2px 2px 2px 20px;
+  font: normal 16px sans-serif;
+  position: relative;
+  /* box-shadow:1px 1px 0 rgba(0,0,0,.2); */
+  /* animation: swing 1s ; */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tag:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  background: inherit;
+  height: 8px;
+  border: 10px solid #fafafa;
+  border-right-color: transparent;
+  -webkit-border-radius: 10px 0 0 10px;
+  -moz-border-radius: 10px 0 0 10px;
+  border-radius: 10px 0 0 10px;
+  left: -20px;
+  top: 0;
+}
+
+.tag:after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: #fff;
+  position: absolute;
+  left: -1px;
+  top: 12px;
+  /* box-shadow:inset 1px 1px 0 #CCC; */
+}
