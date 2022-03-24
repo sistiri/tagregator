@@ -22,7 +22,7 @@ const BookmarkForm = (props: BookmarkFormProps) => {
   return (
     <form onSubmit={urlSubmitHandler}>
       <label className={classes.label} htmlFor="urlInput">
-        <span>Paste your URL here:</span>
+        Paste your URL here:
       </label>
       <input
         className={classes.form__field}

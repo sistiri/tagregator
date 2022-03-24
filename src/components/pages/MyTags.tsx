@@ -8,10 +8,7 @@ type MyTagsProps = {
 };
 
 const MyTags: React.FC<MyTagsProps> = (props) => {
-
-  console.log('>>>> MyTags Page has been rendered')
   const [myTags, setMyTags] = useState<string[]>([]);
-
   const { isLoading, error, sendRequest: fetchMyTags } = useHttp();
 
   useEffect(() => {

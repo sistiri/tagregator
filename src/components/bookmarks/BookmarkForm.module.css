@@ -1,7 +1,7 @@
 .button {
     background: #7f8ff4;
     color: #fff;
-    padding: 11px 36px;
+    padding: 5px 5px;
   }
   .button:hover {
     background: darken(#7f8ff4, 4%);
@@ -16,12 +16,13 @@
     border: 1px solid lightgrey;
     border-radius: 5px;
     outline: 0;
-    padding: 10px 18px;
+    padding: 5px 5px;
   }
   
   .label {
     font-size: large;
     font-weight: bolder;
     color: #7f8ff4;
+    padding: 5px 5px;
   }
   
