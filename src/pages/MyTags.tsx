@@ -1,40 +1,46 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import useHttp from "../hooks/use-http";
 import { Bookmark } from "../models/bookmark.model";
 import Tags from "../components/bookmarks/Tags";
+import { MyBookmarksContext } from "../context/my-bookmarks-context";
 
 type MyTagsProps = {
   tags?: string[];
 };
 
 const MyTags: React.FC<MyTagsProps> = (props) => {
+  const myBookmarksCtx = useContext(MyBookmarksContext);
   const [myTags, setMyTags] = useState<string[]>([]);
-  const { isLoading, error, sendRequest: fetchMyTags } = useHttp();
+  const { isLoading, error } = useHttp();
+  const myBookmarks = myBookmarksCtx.myBookmarks;
 
   useEffect(() => {
-    const grabMyTags = (bookmarksObj: { [id: string]: Bookmark }) => {
-      let loadedTags: string[] = [];
-      for (const key in bookmarksObj) {
-        if (bookmarksObj[key].tags) {
-          loadedTags.push(...bookmarksObj[key].tags!);
-        }
+    const loadedTags = [];
+    for (const key in myBookmarks) {
+      if (myBookmarks[key].tags) {
+        loadedTags.push(...myBookmarks[key].tags!);
+      } else {
+        console.log(myBookmarks[key], " - Has no tags!");
       }
-      const uniqueTags: string[] = Array.from(new Set(loadedTags));
-      setMyTags(uniqueTags);
-      console.log(uniqueTags);
-    };
+    }
+    const uniqueTags: string[] = Array.from(new Set(loadedTags));
+    setMyTags(uniqueTags);
+    console.log(uniqueTags);
+  }, [myBookmarks]);
 
-    fetchMyTags(
-      {
-        url: "https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks.json",
-      },
-      grabMyTags
-    );
-  }, [fetchMyTags]);
+  const onRemoveTag = (tag: string) => {
+    const taggedBookmarks: Bookmark[] = myBookmarksCtx.filterByTag(tag);
+    taggedBookmarks.map((bm) => myBookmarksCtx.removeTag(bm.id, tag));
+  };
 
   return (
     <Fragment>
-      <Tags tags={myTags} loading={isLoading} error={error}></Tags>
+      <Tags
+        tags={myTags}
+        onRemoveTag={onRemoveTag}
+        loading={isLoading}
+        error={error}
+      ></Tags>
     </Fragment>
   );
 };

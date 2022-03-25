@@ -10,6 +10,7 @@ type NewTagsProps = {
   id: string;
   url: string;
   onAddTags: (id: string, enteredTags: string[]) => void;
+  onRemoveTag: (tag: string) => void;
   onCancel: () => void;
   tags?: string[];
 };
@@ -44,7 +45,7 @@ const NewTags: React.FC<NewTagsProps> = (props) => {
         <p>Link: {props.url}</p>
         <NewTagsForm onEnterTags={enterTagsHandler} />
 
-        <Tags tags={props.tags} />
+        <Tags tags={props.tags} onRemoveTag={props.onRemoveTag} />
         <Button
           className={classes.button}
           onClick={props.onCancel}

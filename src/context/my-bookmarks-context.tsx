@@ -15,6 +15,7 @@ type MyBookmarksContextObj = {
   addBookmark: (bookmark: Bookmark) => void;
   removeBookmark: (id: string) => void;
   addTags: (id: string, enteredTags: string[]) => void;
+  removeTag: (id: string, tag: string) => void;
   filterByTag: (tag: string) => Bookmark[];
 };
 
@@ -26,6 +27,7 @@ export const MyBookmarksContext = React.createContext<MyBookmarksContextObj>({
   addBookmark: () => {},
   removeBookmark: () => {},
   addTags: () => {},
+  removeTag: () => {},
   filterByTag: () => [],
 });
 
@@ -110,6 +112,29 @@ const BookmarksContextProvider: React.FC = (props) => {
     console.log(newMyBookmarks);
   };
 
+  const removeTagHandler = (id: string, tag: string) => {
+    const bookmarkIndexToEdit = myBookmarks.findIndex((bm) => bm.id === id);
+    const newMyBookmarks = [...myBookmarks];
+    let allTags: string[];
+    if (myBookmarks[bookmarkIndexToEdit].tags) {
+      allTags = myBookmarks[bookmarkIndexToEdit].tags!.filter(t => t !== tag)
+    } else {
+      throw Error('This tag has not been found on this Bookmark!')
+    }
+    newMyBookmarks[bookmarkIndexToEdit].tags = allTags;
+
+    setMyBookmarks((prevBookMarks) => (prevBookMarks = newMyBookmarks));
+    fetch(
+      `https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks/${id}.json`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({ tags: allTags }),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    console.log(newMyBookmarks);
+  }
+
   const filterByTag = (tag: string) => {
     let taggedBookmarks: Bookmark[] = [];
   if (tag) {
@@ -121,6 +146,7 @@ const BookmarksContextProvider: React.FC = (props) => {
   }
   return taggedBookmarks
   }
+
   const contextValue: MyBookmarksContextObj = {
     myBookmarks: myBookmarks,
     isLoading: isLoading,
@@ -128,6 +154,7 @@ const BookmarksContextProvider: React.FC = (props) => {
     addBookmark: addBookmarkHandler,
     removeBookmark: removeBookmarkHandler,
     addTags: addTagsHandler,
+    removeTag: removeTagHandler,
     filterByTag: filterByTag,
     // fetchBookmarks: fetchBookmarksHandler,
   };

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import Card from "../UI/Card";
 
 import classes from "./BookmarkItem.module.css";
@@ -6,6 +6,7 @@ import Button from "../UI/Button";
 import NewTags from "./NewTags";
 import Tags from "./Tags";
 import HyperLink from "./HyperLink";
+import { MyBookmarksContext } from "../../context/my-bookmarks-context";
 
 type BookMarkItemProps = {
   key: string;
@@ -16,7 +17,8 @@ type BookMarkItemProps = {
   tags?: string[];
 };
 const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
-  console.log('>>>>> BookarkItem rendered')
+  console.log(">>>>> BookarkItem rendered");
+  const { removeTag } = useContext(MyBookmarksContext)
 
   const [isNewTagsModalShown, setIsNewTagsModalShown] = useState(false);
 
@@ -26,6 +28,10 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
 
   const hideEditTagsModalHandler = () => {
     setIsNewTagsModalShown(false);
+  };
+
+  const onRemoveTag = (tag: string) => {
+    removeTag(props.id, tag);
   };
 
   return (
@@ -49,13 +55,18 @@ const BookmarkItem: React.FC<BookMarkItemProps> = (props) => {
               Delete
             </Button>
           </li>
-          <Tags tags={props.tags} onShowAddTags={showEditTagsModal} />
+          <Tags
+            tags={props.tags}
+            onShowAddTags={showEditTagsModal}
+            onRemoveTag={onRemoveTag}
+          />
           {isNewTagsModalShown && (
             <NewTags
               id={props.id}
               url={props.url}
               tags={props.tags}
               onAddTags={props.onAddTags}
+              onRemoveTag={onRemoveTag}
               onCancel={hideEditTagsModalHandler}
             ></NewTags>
           )}
