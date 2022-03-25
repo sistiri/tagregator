@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import NewBookmark from "../bookmarks/NewBookmark";
-import Bookmarks from "../bookmarks/Bookmarks";
-import { Bookmark } from "../../models/bookmark.model";
-import useHttp from "../../hooks/use-http";
+import NewBookmark from "../components/bookmarks/NewBookmark";
+import Bookmarks from "../components/bookmarks/Bookmarks";
+import { Bookmark } from "../models/bookmark.model";
+import useHttp from "../hooks/use-http";
+import useFetchBookmarks from "../hooks/use-fetch-bookmarks";
 // import classes from "./MyBookmarks.module.css";
 
 const MyBookmarks: React.FC = () => {
@@ -11,7 +12,10 @@ const MyBookmarks: React.FC = () => {
 
   const { isLoading, error, sendRequest: fetchBookmarks } = useHttp();
 
+  useFetchBookmarks()
+
   useEffect(() => {
+    
     const transformBookmarks = (bookmarksObj: { [id: string]: Bookmark }) => {
       const loadedBookmarks = [];
       for (const key in bookmarksObj) {

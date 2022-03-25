@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
-import useHttp from "../../hooks/use-http";
-import { Bookmark } from "../../models/bookmark.model";
-import Tags from "../bookmarks/Tags";
+import useHttp from "../hooks/use-http";
+import { Bookmark } from "../models/bookmark.model";
+import Tags from "../components/bookmarks/Tags";
 
 type MyTagsProps = {
   tags?: string[];

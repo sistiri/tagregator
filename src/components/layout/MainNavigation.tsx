@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import classes from './MainNavigation.module.css'
 
 const MainNavigation: React.FC = () => {
-  let activeClassName = "underline";
+  let activeClassName = "active";
 
   return (
     <header className={classes.header}>
@@ -15,7 +15,7 @@ const MainNavigation: React.FC = () => {
             <NavLink
               to="/mybookmarks"
               className={({ isActive }) =>
-                isActive ? activeClassName : undefined
+                isActive ? activeClassName : 'notactive'
               }
             >
               My Bookmarks
@@ -25,7 +25,7 @@ const MainNavigation: React.FC = () => {
             <NavLink
               to="/mytags"
               className={({ isActive }) =>
-                isActive ? activeClassName : undefined
+                isActive ? activeClassName : 'notactive'
               }
             >
               My Tags

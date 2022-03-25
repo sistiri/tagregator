@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import MyBookmarks from "./components/pages/MyBookmarks";
-import MyTags from "./components/pages/MyTags";
+import MyBookmarks from "./pages/MyBookmarks";
+import MyTags from "./pages/MyTags";
 import "./App.css";
-import TagDetails from "./components/pages/TagDetails";
+import TagDetails from "./pages/TagDetails";
 
 const App: React.FC = () => {
   return (
