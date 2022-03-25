@@ -1,31 +1,28 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { useParams } from "react-router-dom";
+import Bookmarks from "../components/bookmarks/Bookmarks";
+import { MyBookmarksContext } from "../context/my-bookmarks-context";
+import { Bookmark } from "../models/bookmark.model";
 
 type TagDetailsProps = {};
 
 const TagDetails: React.FC<TagDetailsProps> = (props) => {
   const params = useParams();
+  const myBookmarksCtx = useContext(MyBookmarksContext);
 
-  console.log(params.tag);
+  const taggedBookmarks: Bookmark[] = myBookmarksCtx.filterByTag(params.tag!)
 
   return (
     <Fragment>
       <h1>{params.tag}</h1>
-      {/* <Bookmarks
+      <Bookmarks
         bookmarks={taggedBookmarks}
-        loading={isLoading}
-        error={error}
-        onFetch={fetchBookmarks}
-        onRemoveBookmark={removeBookmarkHandler}
-        onAddTags={addTagsHandler}
-      /> */}
-      {/* <Bookmarks bookmarks={[]} loading={false} error={undefined} onFetch={function (requestConfig: RequestConfig, applyData: Function): Promise<void> {
-              throw new Error("Function not implemented.");
-          } } onRemoveBookmark={function (id: string): void {
-              throw new Error("Function not implemented.");
-          } } onAddTags={function (id: string, enteredTags: string[]): void {
-              throw new Error("Function not implemented.");
-          } } /> */}
+        loading={myBookmarksCtx.isLoading}
+        error={myBookmarksCtx.error}
+        // onFetch={myBookmarksCtx.fetchBookmarks}
+        onRemoveBookmark={myBookmarksCtx.removeBookmark}
+        onAddTags={myBookmarksCtx.addTags}
+      />
     </Fragment>
   );
 };

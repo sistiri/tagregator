@@ -15,6 +15,7 @@ type MyBookmarksContextObj = {
   addBookmark: (bookmark: Bookmark) => void;
   removeBookmark: (id: string) => void;
   addTags: (id: string, enteredTags: string[]) => void;
+  filterByTag: (tag: string) => Bookmark[];
 };
 
 export const MyBookmarksContext = React.createContext<MyBookmarksContextObj>({
@@ -24,7 +25,8 @@ export const MyBookmarksContext = React.createContext<MyBookmarksContextObj>({
   // fetchBookmarks: () => Promise<void>,
   addBookmark: () => {},
   removeBookmark: () => {},
-  addTags: () => {}
+  addTags: () => {},
+  filterByTag: () => [],
 });
 
 const BookmarksContextProvider: React.FC = (props) => {
@@ -108,6 +110,17 @@ const BookmarksContextProvider: React.FC = (props) => {
     console.log(newMyBookmarks);
   };
 
+  const filterByTag = (tag: string) => {
+    let taggedBookmarks: Bookmark[] = [];
+  if (tag) {
+    taggedBookmarks = myBookmarks.filter((bm) =>
+      bm.tags!.includes(tag)
+    );
+  } else {
+    console.log("This tag has no bookmarks!");
+  }
+  return taggedBookmarks
+  }
   const contextValue: MyBookmarksContextObj = {
     myBookmarks: myBookmarks,
     isLoading: isLoading,
@@ -115,6 +128,7 @@ const BookmarksContextProvider: React.FC = (props) => {
     addBookmark: addBookmarkHandler,
     removeBookmark: removeBookmarkHandler,
     addTags: addTagsHandler,
+    filterByTag: filterByTag,
     // fetchBookmarks: fetchBookmarksHandler,
   };
 
