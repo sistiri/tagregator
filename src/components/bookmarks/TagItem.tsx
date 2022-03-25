@@ -15,7 +15,8 @@ const TagItem: React.FC<TagItemProps> = (props) => {
     setHover(false);
   };
 
-  const onCloseHandler = () => {
+  const onCloseHandler = (event: React.MouseEvent) => {
+      event.preventDefault()
     props.removeTag(props.tag)
   }
 
