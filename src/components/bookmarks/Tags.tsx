@@ -1,5 +1,7 @@
 // import Button from "../UI/Button";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import TagItem from "./TagItem";
 import classes from "./Tags.module.css";
 
 type TagsProps = {
@@ -7,28 +9,23 @@ type TagsProps = {
   error?: any;
   onShowAddTags?: () => void;
   tags?: string[];
-  filteredBy?: string;
-  filterPhrase?: string;
+  // filteredBy?: string;
+  // filterPhrase?: string;
 };
 
 const Tags: React.FC<TagsProps> = (props) => {
-  console.log('>>>>> Tags rendered')
+  console.log(">>>>> Tags rendered");
+  
   return (
     <div>
       {props.tags ? (
         props.tags.map((tag: string) => (
-          <Link to={`../mytags/${tag}`} key={tag} className={classes.tag}>
-            {tag}
+          <Link to={`../mytags/${tag}`} key={tag}>
+            <TagItem tag={tag}></TagItem>
           </Link>
         ))
-      ) : ( <h5>No tags added yet...</h5>
-        // <Button
-        //   className={classes.button}
-        //   type="button"
-        //   onClick={props.onShowAddTags}
-        // >
-        //   Add some tags!
-        // </Button>
+      ) : (
+        <h5>No tags added yet...</h5>
       )}
     </div>
   );
