@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-export type RequestConfig = {
+type RequestConfig = {
   url: string;
   method?: string;
   headers?: HeadersInit;

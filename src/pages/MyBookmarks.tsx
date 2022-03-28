@@ -20,7 +20,6 @@ const MyBookmarks: React.FC = () => {
         error={myBookmarksCtx.error}
         onRemoveBookmark={myBookmarksCtx.removeBookmark}
         onAddTags={myBookmarksCtx.addTags}
-        // onFetch={myBookmarksCtx.fetchBookmarks}
       />
     </div>
   );

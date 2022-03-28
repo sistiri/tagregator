@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { RequestConfig } from "../../hooks/use-http";
 
 import classes from "./Button.module.css";
 
@@ -9,10 +8,6 @@ type buttonProps = {
   type: "button" | "submit" | "reset";
   onClick?: () => void;
   onSubmit?: () => void;
-  onFetch?: (
-    requestConfig: RequestConfig,
-    applyData: Function
-  ) => Promise<void>;
 };
 
 const Button = (props: buttonProps) => {

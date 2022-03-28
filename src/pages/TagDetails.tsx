@@ -20,7 +20,6 @@ const TagDetails: React.FC<TagDetailsProps> = (props) => {
         bookmarks={taggedBookmarks}
         loading={myBookmarksCtx.isLoading}
         error={myBookmarksCtx.error}
-        // onFetch={myBookmarksCtx.fetchBookmarks}
         onRemoveBookmark={myBookmarksCtx.removeBookmark}
         onAddTags={myBookmarksCtx.addTags}
       />
