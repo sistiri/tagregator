@@ -9,7 +9,7 @@ type MyBookmarksProviderProps = {}
     const MyBookmarksProvider: React.FC<MyBookmarksProviderProps> = (props) => {
         const [myBookmarks, setMyBookmarks] = useState<Bookmark[]>([]);
       
-        const { isLoading, error, sendRequest: fetchBookmarksHandler } = useHttp();
+        const { isLoading, error, sendRequest: fetchBookmarks } = useHttp();
       
         useEffect(() => {
           const transformBookmarks = (bookmarksObj: { [id: string]: Bookmark }) => {
@@ -29,13 +29,13 @@ type MyBookmarksProviderProps = {}
             // }
           };
       
-          fetchBookmarksHandler(
+          fetchBookmarks(
             {
               url: "https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks.json",
             },
             transformBookmarks
           );
-        }, [fetchBookmarksHandler]);
+        }, [fetchBookmarks]);
       
         const addBookmarkHandler = (bookmark: Bookmark) => {
           if (myBookmarks.some((bm) => bm.url === bookmark.url)) {
@@ -70,7 +70,7 @@ type MyBookmarksProviderProps = {}
           newMyBookmarks[bookmarkIndexToEdit].tags = allTags;
       
           console.log(newMyBookmarks[bookmarkIndexToEdit].tags);
-          setMyBookmarks((prevBookMarks) => (prevBookMarks = newMyBookmarks));
+          setMyBookmarks(newMyBookmarks);
           fetch(
             `https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks/${id}.json`,
             {
@@ -93,7 +93,7 @@ type MyBookmarksProviderProps = {}
           }
           newMyBookmarks[bookmarkIndexToEdit].tags = allTags;
       
-          setMyBookmarks((prevBookMarks) => (prevBookMarks = newMyBookmarks));
+          setMyBookmarks(newMyBookmarks);
           fetch(
             `https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks/${id}.json`,
             {
