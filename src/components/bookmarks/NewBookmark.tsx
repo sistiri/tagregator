@@ -13,9 +13,10 @@ type NewBookmarkProps = {
 };
 
 const NewBookmark: React.FC<NewBookmarkProps> = (props) => {
-  console.log('>>>>> NewBookmark rendered')
+    console.log('>>>>> NewBookmark rendered')
 
   const { isLoading, error, sendRequest: postBookmarkRequest } = useHttp();
+  // const abortController = new AbortController()
 
   const createBookmark = (
     newBookmarkBase: { url: string; date: Date },
@@ -44,6 +45,7 @@ const NewBookmark: React.FC<NewBookmarkProps> = (props) => {
     postBookmarkRequest(
       {
         url: "https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks.json",
+        // signal: abortController.signal,
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: newBookmarkBase,

@@ -37,6 +37,7 @@ const BookmarksContextProvider: React.FC = (props) => {
   const { isLoading, error, sendRequest: fetchBookmarksHandler } = useHttp();
 
   useEffect(() => {
+    // const abortController = new AbortController();
     const transformBookmarks = (bookmarksObj: { [id: string]: Bookmark }) => {
       const loadedBookmarks = [];
       for (const key in bookmarksObj) {
@@ -57,9 +58,11 @@ const BookmarksContextProvider: React.FC = (props) => {
     fetchBookmarksHandler(
       {
         url: "https://tagregatory-default-rtdb.europe-west1.firebasedatabase.app/bookmarks.json",
+        // signal: abortController.signal,
       },
       transformBookmarks
     );
+    // return () => abortController.abort();
   }, [fetchBookmarksHandler]);
 
   // const addBookmarkHandler = (url: string) => {
@@ -143,13 +146,15 @@ const BookmarksContextProvider: React.FC = (props) => {
     const uniqueTags = Array.from(new Set(allTags));
     console.log(allTags);
     console.log(uniqueTags);
-    const bookmarksWithTags: Bookmark[] = myBookmarks.filter(bm => bm.tags);
-    console.log(bookmarksWithTags)
-    let taggedBookmarks: Bookmark[] = []
-    if(uniqueTags.includes(tag)){
-      taggedBookmarks = bookmarksWithTags.filter((bm) => bm.tags!.includes(tag));
+    const bookmarksWithTags: Bookmark[] = myBookmarks.filter((bm) => bm.tags);
+    console.log(bookmarksWithTags);
+    let taggedBookmarks: Bookmark[] = [];
+    if (uniqueTags.includes(tag)) {
+      taggedBookmarks = bookmarksWithTags.filter((bm) =>
+        bm.tags!.includes(tag)
+      );
     } else {
-      console.log("No bookmarks are saved to thgis tag!");
+      console.log("No bookmarks are saved to this tag!");
     }
     return taggedBookmarks;
   };

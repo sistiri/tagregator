@@ -20,7 +20,7 @@ const MyTags: React.FC<MyTagsProps> = (props) => {
       if (myBookmarks[key].tags) {
         loadedTags.push(...myBookmarks[key].tags!);
       } else {
-        console.log(myBookmarks[key], " - Has no tags!");
+        console.log(myBookmarks[key].id, " - Has no tags!");
       }
     }
     const uniqueTags: string[] = Array.from(new Set(loadedTags));
