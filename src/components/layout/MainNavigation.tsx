@@ -1,6 +1,8 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
+import Login from "../auth/Login";
 
-import classes from './MainNavigation.module.css'
+import classes from "./MainNavigation.module.css";
 
 const MainNavigation: React.FC = () => {
   let activeClassName = "active";
@@ -15,7 +17,7 @@ const MainNavigation: React.FC = () => {
             <NavLink
               to="/mybookmarks"
               className={({ isActive }) =>
-                isActive ? activeClassName : 'notactive'
+                isActive ? activeClassName : "notactive"
               }
             >
               My Bookmarks
@@ -25,7 +27,7 @@ const MainNavigation: React.FC = () => {
             <NavLink
               to="/mytags"
               className={({ isActive }) =>
-                isActive ? activeClassName : 'notactive'
+                isActive ? activeClassName : "notactive"
               }
             >
               My Tags
@@ -33,6 +35,7 @@ const MainNavigation: React.FC = () => {
           </li>
         </ul>
       </nav>
+      <Login></Login>
     </header>
   );
 };

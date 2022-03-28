@@ -1,0 +1,19 @@
+.form {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 2px; 
+    margin: 2px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  
+  .button {
+    background: #f47f7f;
+    color: #fff;
+    font-size: small;
+    height: min-content;
+    /* line-height: 1; */
+    margin-top: auto;
+  }
+  

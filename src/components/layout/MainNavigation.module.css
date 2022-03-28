@@ -16,11 +16,14 @@
   color: white;
 }
 
+.nav {
+  display: inline-block;
+}
 .nav ul {
   list-style: none;
-  display: flex;
+  display: inline-flex;
   margin: 0;
-  padding: 0;
+  padding: 0;;
 }
 
 .nav li {
@@ -35,6 +38,9 @@
 
 .nav a:hover,
 .nav a:active,
-.nav a.active {
+.nav a.active,
+.nav a.isActive{
   color: #e6fcfc;
+  text-decoration: underline;
+  text-decoration-style: dotted;
 }
