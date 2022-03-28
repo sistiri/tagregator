@@ -6,7 +6,7 @@ import Button from "../UI/Button";
 import NewTags from "./NewTags";
 import Tags from "./Tags";
 import HyperLink from "./HyperLink";
-import { MyBookmarksContext } from "../../context/my-bookmarks-context";
+import MyBookmarksContext from "../../context/myBookmarks-context";
 
 type BookMarkItemProps = {
   key: string;

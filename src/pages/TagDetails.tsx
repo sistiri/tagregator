@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Bookmarks from "../components/bookmarks/Bookmarks";
-import { MyBookmarksContext } from "../context/my-bookmarks-context";
+import MyBookmarksContext from "../context/myBookmarks-context";
 import { Bookmark } from "../models/bookmark.model";
 
 type TagDetailsProps = {};

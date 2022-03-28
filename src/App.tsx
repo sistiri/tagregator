@@ -5,11 +5,11 @@ import MyBookmarks from "./pages/MyBookmarks";
 import MyTags from "./pages/MyTags";
 import "./App.css";
 import TagDetails from "./pages/TagDetails";
-import BookmarksContextProvider from "./context/my-bookmarks-context";
+import MyBookmarksProvider from "./context/MyBookmarksProvider";
 
 const App: React.FC = () => {
   return (
-    <BookmarksContextProvider>
+    <MyBookmarksProvider>
       <Layout>
         <div className="App">
           <Routes>
@@ -19,7 +19,7 @@ const App: React.FC = () => {
           </Routes>
         </div>
       </Layout>
-    </BookmarksContextProvider>
+    </MyBookmarksProvider>
   );
 };
 

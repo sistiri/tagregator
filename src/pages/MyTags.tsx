@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import useHttp from "../hooks/use-http";
 import { Bookmark } from "../models/bookmark.model";
 import Tags from "../components/bookmarks/Tags";
-import { MyBookmarksContext } from "../context/my-bookmarks-context";
+import MyBookmarksContext from "../context/myBookmarks-context";
 
 type MyTagsProps = {
   tags?: string[];
