@@ -117,9 +117,9 @@ const BookmarksContextProvider: React.FC = (props) => {
     const newMyBookmarks = [...myBookmarks];
     let allTags: string[];
     if (myBookmarks[bookmarkIndexToEdit].tags) {
-      allTags = myBookmarks[bookmarkIndexToEdit].tags!.filter(t => t !== tag)
+      allTags = myBookmarks[bookmarkIndexToEdit].tags!.filter((t) => t !== tag);
     } else {
-      throw Error('This tag has not been found on this Bookmark!')
+      throw Error("This tag has not been found on this Bookmark!");
     }
     newMyBookmarks[bookmarkIndexToEdit].tags = allTags;
 
@@ -133,19 +133,26 @@ const BookmarksContextProvider: React.FC = (props) => {
       }
     );
     console.log(newMyBookmarks);
-  }
+  };
 
   const filterByTag = (tag: string) => {
-    let taggedBookmarks: Bookmark[] = [];
-  if (tag) {
-    taggedBookmarks = myBookmarks.filter((bm) =>
-      bm.tags!.includes(tag)
-    );
-  } else {
-    console.log("This tag has no bookmarks!");
-  }
-  return taggedBookmarks
-  }
+    const allTags = [];
+    for (const key in myBookmarks) {
+      allTags.push(...(myBookmarks[key].tags ?? []));
+    }
+    const uniqueTags = Array.from(new Set(allTags));
+    console.log(allTags);
+    console.log(uniqueTags);
+    const bookmarksWithTags: Bookmark[] = myBookmarks.filter(bm => bm.tags);
+    console.log(bookmarksWithTags)
+    let taggedBookmarks: Bookmark[] = []
+    if(uniqueTags.includes(tag)){
+      taggedBookmarks = bookmarksWithTags.filter((bm) => bm.tags!.includes(tag));
+    } else {
+      console.log("No bookmarks are saved to thgis tag!");
+    }
+    return taggedBookmarks;
+  };
 
   const contextValue: MyBookmarksContextObj = {
     myBookmarks: myBookmarks,

@@ -11,6 +11,7 @@ const TagDetails: React.FC<TagDetailsProps> = (props) => {
   const myBookmarksCtx = useContext(MyBookmarksContext);
 
   const taggedBookmarks: Bookmark[] = myBookmarksCtx.filterByTag(params.tag!)
+  
 
   return (
     <Fragment>
