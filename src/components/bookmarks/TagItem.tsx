@@ -23,6 +23,7 @@ const TagItem: React.FC<TagItemProps> = (props) => {
   return (
     <span
       className={classes.tag}
+      
       onMouseEnter={onMouseEnterHandler}
       onMouseLeave={onMouseLeaveHandler}
     >

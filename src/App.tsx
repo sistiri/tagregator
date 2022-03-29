@@ -6,6 +6,7 @@ import MyTags from "./pages/MyTags";
 import "./App.css";
 import TagDetails from "./pages/TagDetails";
 import MyBookmarksProvider from "./context/MyBookmarksProvider";
+import Login from "./pages/Login";
 
 const App: React.FC = () => {
   return (
@@ -13,7 +14,8 @@ const App: React.FC = () => {
       <Layout>
         <div className="App">
           <Routes>
-            <Route path="mybookmarks" element={<MyBookmarks />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/mybookmarks" element={<MyBookmarks />} />
             <Route path="/mytags" element={<MyTags />} />
             <Route path="/mytags/:tag" element={<TagDetails />} />
           </Routes>
