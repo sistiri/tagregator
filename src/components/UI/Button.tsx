@@ -1,16 +1,31 @@
-import { ReactNode } from "react";
-
 import classes from "./Button.module.css";
 
-type buttonProps = {
-  className: string;
-  children: ReactNode;
-  type: "button" | "submit" | "reset";
-  onClick?: () => void;
-  onSubmit?: () => void;
-};
+// export interface ButtonProps
+//   extends React.DetailedHTMLProps<
+//       React.ButtonHTMLAttributes<HTMLButtonElement>,
+//       HTMLButtonElement
+//     >,
+//     React.AriaAttributes {}
 
-const Button = (props: buttonProps) => {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+
+// interface ButtonProps extends React.DetailedHTMLProps {
+//   className: string;
+//   children: ReactNode;
+//   type: "button" | "submit" | "reset";
+//   onClick?: () => void;
+//   onSubmit?: () => void;
+// };
+
+// const Button: React.FC<ButtonProps> = (props) => {
+//   const { children, className, ...rest } = props;
+//   return (
+//     <button className={classes.button} {...rest}>
+//       {children}
+//     </button>
+  // );
+
+  const Button = (props: ButtonProps) => {
   return (
     <button
       className={`${classes.button} ${props.className}`}
