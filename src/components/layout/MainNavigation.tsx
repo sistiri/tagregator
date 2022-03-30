@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Login from "../auth/NavbarLogin";
+import NavbarLogin from "../auth/NavbarLogin";
 
 import classes from "./MainNavigation.module.css";
 
@@ -35,7 +35,7 @@ const MainNavigation: React.FC = () => {
           </li>
           <li>
             <NavLink
-              to="/login"
+              to="/signup"
               className={({ isActive }) =>
                 isActive ? activeClassName : "notactive"
               }
@@ -46,7 +46,7 @@ const MainNavigation: React.FC = () => {
         </ul>
       </nav>
       
-      <Login></Login>
+      <NavbarLogin></NavbarLogin>
     </header>
   );
 };
