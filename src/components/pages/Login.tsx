@@ -26,9 +26,6 @@ const Login: React.FC<LoginProps> = (props) => {
       setError('Failed to Login')
     }
     setIsLoading(false)
-    // console.log(JSON.stringify(currentUser!.email))
-    console.log('LOGGED IN')
-    console.log('currentUser: ', currentUser)
     navigate('/dashboard')
   };
 

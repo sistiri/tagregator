@@ -42,16 +42,16 @@ const MainNavigation: React.FC = () => {
               My Tags
             </NavLink>
           </li>
-          {/* <li>
+      { currentUser && <li>
             <NavLink
-              to="/signup"
+              to="/dashboard"
               className={({ isActive }) =>
                 isActive ? activeClassName : "notactive"
               }
             >
-              Sign Up
+              Dashboard
             </NavLink>
-          </li> */}
+          </li>}
         </ul>
       </nav>
       {currentUser && <Button onClick={onLogout}>Log out</Button>}

@@ -5,7 +5,6 @@ import Button from "../UI/Button";
 import classes from "./Signup.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
-import auth from '../../firebase'
 
 type SignupProps = {};
 
@@ -35,9 +34,7 @@ const Signup: React.FC<SignupProps> = (props) => {
     }
     setIsLoading(false)
     // console.log(JSON.stringify(currentUser!.email))
-    console.log('SIGNED UP')
-    console.log('currentUser: ', currentUser)
-    navigate('/mybookmarks')
+    currentUser ? navigate('/mybookmarks') : navigate('/signup')
   };
 
   return (
@@ -67,6 +64,7 @@ const Signup: React.FC<SignupProps> = (props) => {
               Sign Up
             </Button>
           </form>
+          {isLoading && <p style={{color:'red'}}>Loading...</p>}
           {error && <p style={{color:'red'}}>{error}</p>}
           <div className={classes["para-2"]}>
             Already have an account? <Link to='../../login'>Log In</Link>

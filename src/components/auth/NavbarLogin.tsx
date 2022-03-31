@@ -9,27 +9,27 @@ type NavbarLoginProps = {};
 const NavbarLogin: React.FC<NavbarLoginProps> = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const { login, currentUser } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
-    
 
     try {
       setIsLoading(true);
+      console.log('true', isLoading)
       setError("");
       await login(emailRef.current!.value, passwordRef.current!.value);
+      navigate("/dashboard");
+      setIsLoading(false);
+      console.log('false', isLoading)
     } catch {
       setError("Failed to Login");
+      setIsLoading(false);
     }
-    setIsLoading(false);
-    // console.log(JSON.stringify(currentUser!.email))
-    console.log("LOGGED IN");
-    console.log("currentUser: ", currentUser);
-    navigate("/dashboard");
+    
   };
 
   return (
@@ -44,7 +44,7 @@ const NavbarLogin: React.FC<NavbarLoginProps> = (props) => {
           placeholder="Email"
           ref={emailRef}
         />
-        <Link to="/signup">Create Account</Link>
+        {!isLoading && <Link className={classes['signup-link']} to="/signup">Create Account</Link>}
         {/* <label className={classes['navbar-login-label']} htmlFor="password" /> */}
         <input
           className={classes["navbar-login-input"]}
@@ -53,9 +53,11 @@ const NavbarLogin: React.FC<NavbarLoginProps> = (props) => {
           placeholder="Password"
           ref={passwordRef}
         />
-        <Button className={classes.button} type="submit">
+        {!isLoading && <Button className={classes.button} type="submit">
           Login
-        </Button>
+        </Button>}
+        {isLoading && <span>Loading...</span>}
+        {error && <h2>{error}</h2>}
       </form>
 
       {/* </div> */}
