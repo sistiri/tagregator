@@ -31,10 +31,10 @@ const Dashboard: React.FC = () => {
           {error && <p>{error}</p>}
           <p><strong>Email: </strong> {currentUser && currentUser.email}</p>
           
-      <Button className={classes.button} onClick={logoutHandler}><Link to="./update-profile">Update Profile</Link></Button>
+      <Button className={classes.button}><Link to="./update-profile">Update Profile</Link></Button>
         </Fragment>
       </Card>
-      <Button className={classes.button} onClick={logoutHandler}>Log Out</Button>
+      <Link to='/' onClick={logoutHandler}>Log Out</Link>
     </Fragment>
   );
 };

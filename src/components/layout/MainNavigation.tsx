@@ -1,11 +1,20 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth-context";
 import NavbarLogin from "../auth/NavbarLogin";
+import Button from "../UI/Button";
 
 import classes from "./MainNavigation.module.css";
 
 const MainNavigation: React.FC = () => {
+  const { currentUser, logout} = useAuth();
+  const navigate = useNavigate()
   let activeClassName = "active";
+
+  const onLogout = () => {
+    logout()
+    navigate('/login')
+  }
 
   return (
     <header className={classes.header}>
@@ -33,7 +42,7 @@ const MainNavigation: React.FC = () => {
               My Tags
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
               to="/signup"
               className={({ isActive }) =>
@@ -42,11 +51,11 @@ const MainNavigation: React.FC = () => {
             >
               Sign Up
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
-      
-      <NavbarLogin></NavbarLogin>
+      {currentUser && <Button onClick={onLogout}>Log out</Button>}
+      {!currentUser && <NavbarLogin></NavbarLogin>}
     </header>
   );
 };

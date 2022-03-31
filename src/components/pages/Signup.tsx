@@ -5,6 +5,7 @@ import Button from "../UI/Button";
 import classes from "./Signup.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
+import auth from '../../firebase'
 
 type SignupProps = {};
 
@@ -33,8 +34,9 @@ const Signup: React.FC<SignupProps> = (props) => {
       setError('Failed to create an account')
     }
     setIsLoading(false)
-    console.log(JSON.stringify(currentUser!.email))
+    // console.log(JSON.stringify(currentUser!.email))
     console.log('SIGNED UP')
+    console.log('currentUser: ', currentUser)
     navigate('/mybookmarks')
   };
 
