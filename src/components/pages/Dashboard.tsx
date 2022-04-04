@@ -19,7 +19,6 @@ const Dashboard: React.FC = () => {
         } catch (error) {
             setError('Failed to log out!')
         }
-
     }
 
   return (

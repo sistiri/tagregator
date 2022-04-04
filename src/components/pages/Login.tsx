@@ -1,17 +1,17 @@
 import React, { FormEvent, Fragment, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import classes from "./Login.module.css";
-import { Link, useNavigate } from "react-router-dom";
 
 type LoginProps = {};
 
 const Login: React.FC<LoginProps> = (props) => {
-  const navigate = useNavigate()
-  const { login, currentUser } = useAuth();
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('');
+  const navigate = useNavigate()
+  const { login, currentUser } = useAuth();
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 

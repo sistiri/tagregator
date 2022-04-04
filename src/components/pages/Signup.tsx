@@ -2,9 +2,9 @@ import React, { FormEvent, Fragment, useRef, useState } from "react";
 import { useAuth } from "../../context/auth-context";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
-import classes from "./Signup.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
+import classes from "./Signup.module.css";
 
 type SignupProps = {};
 

@@ -68,6 +68,7 @@ export const AuthProvider = (props: AuthProviderProps) => {
 
   return (
     <AuthContext.Provider value={contextValue}>
+      {isLoading && <p> Loading...</p>}
       {!isLoading && props.children}
     </AuthContext.Provider>
   );

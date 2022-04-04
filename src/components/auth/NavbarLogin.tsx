@@ -1,8 +1,8 @@
 import React, { FormEvent, Fragment, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth-context";
 import Button from "../UI/Button";
 import classes from "./NavbarLogin.module.css";
-import { useAuth } from "../../context/auth-context";
 
 type NavbarLoginProps = {};
 
@@ -19,16 +19,13 @@ const NavbarLogin: React.FC<NavbarLoginProps> = (props) => {
 
     try {
       setIsLoading(true);
-      console.log('true', isLoading)
       setError("");
       await login(emailRef.current!.value, passwordRef.current!.value);
-      navigate("/dashboard");
-      setIsLoading(false);
-      console.log('false', isLoading)
     } catch {
       setError("Failed to Login");
-      setIsLoading(false);
     }
+    setIsLoading(false);
+    navigate("/dashboard");
     
   };
 
