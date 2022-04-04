@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MyBookmarksProvider from "./context/MyBookmarksProvider";
-import { AuthProvider } from "./context/auth-context";
+import { AuthProvider, useAuth } from "./context/auth-context";
 import Layout from "./components/layout/Layout";
 import Dashboard from "./components/pages/Dashboard";
 import MyBookmarks from "./components/pages/MyBookmarks";
