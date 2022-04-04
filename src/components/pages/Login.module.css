@@ -1,57 +1,44 @@
 .card {
-  max-width: 400px;
-  display: flex;
-  justify-content: center;
-  justify-self: center;
-  align-items: center;
-  align-self: center;
-  padding: auto;
-}
-
-
-h1 {
-  text-align: center;
-  padding-top: 15px;
-}
-
-h4 {
-  text-align: center;
-}
-
-form label {
-  display: flex;
-  margin-top: 20px;
-  font-size: 18px;
-}
-
-form input {
-  width: 100%;
-  padding: 7px;
-  border: none;
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 4px;
-  outline: none;
-}
-.button {
-  /* width: 320px; */
-  height: 35px;
-  margin-top: 20px;
-  border: none;
-  background-color: #7f8ff4;
-  color: white;
-  font-size: 18px;
-}
-p {
-  text-align: center;
-  padding-top: 20px;
-  font-size: 15px;
-}
-.para-2 {
-  text-align: center;
-  font-size: 15px;
-  margin-top: 10px;
-}
-
-.para-2 a {
-  color: #49c1a2;
-}
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    align-self: center;
+    padding: auto;
+  }
+  
+  /* h1 {
+    text-align: center;
+    padding-top: 15px;
+  } */
+  
+  /* h4 {
+    text-align: center;
+  } */
+  
+  .button {
+    /* width: 320px; */
+    height: 35px;
+    margin-top: 20px;
+    border: none;
+    background-color: #7f8ff4;
+    color: white;
+    font-size: 18px;
+  }
+  
+  p {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 15px;
+  }
+  .para-2 {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+  
+  .para-2 a {
+    color: #49c1a2;
+  }
+  

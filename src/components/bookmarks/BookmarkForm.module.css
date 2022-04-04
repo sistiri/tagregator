@@ -16,13 +16,13 @@
     border: 1px solid lightgrey;
     border-radius: 5px;
     outline: 0;
-    padding: 5px 5px;
+    /* padding: 5px 5px; */
   }
   
   .label {
+    display: inline-flex;
     font-size: large;
     font-weight: bolder;
     color: #7f8ff4;
-    padding: 5px 5px;
   }
   
